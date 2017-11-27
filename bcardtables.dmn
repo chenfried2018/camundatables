@@ -594,4 +594,160 @@
       </rule>
     </decisionTable>
   </decision>
+  <decision id="usagematrix" name="Usage Matrix01">
+    <extensionElements>
+      <biodi:bounds x="407" y="710" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_1pmpknp">
+      <input id="InputClause_17buagb" label="MCC" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0voc82a" typeRef="string">
+          <text>mcc</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1rqvrdx">
+          <text><![CDATA["4829","6010","6012","6050","6051","6540","5039","5046","5085","5099","5169","5211","5094","5521","5932","5933","","5935","5937","5971","6513","7995"]]></text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_01e5z6g" label="Risk" name="risk" typeRef="double" />
+      <rule id="row-860506117-28">
+        <description>Financial Stations</description>
+        <inputEntry id="UnaryTests_0onkhmu">
+          <text><![CDATA["4829", "6010", "6012", "6050", "6051", "6540"]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0t8x7h9">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-29">
+        <description>Unusual materials</description>
+        <inputEntry id="UnaryTests_1sb7755">
+          <text><![CDATA["5039", "5046", "5085", "5169", "5099", "5211"]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xlv2y7">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-30">
+        <description>Money Laundering Risks</description>
+        <inputEntry id="UnaryTests_1jgtwma">
+          <text><![CDATA["7995", "6513", "5971", "5937", "5935", "5521", "5094", "5932", "5933", ""]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13s5lyk">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="sum" name="Usage Matrix02">
+    <extensionElements>
+      <biodi:bounds x="406" y="810" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_1awlmp7">
+      <input id="InputClause_1jf6wtk" label="Sum" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_18oiw4a" typeRef="double">
+          <text>sum</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0opv9i6" label="Risk" name="risk" typeRef="double" />
+      <rule id="row-860506117-31">
+        <inputEntry id="UnaryTests_1183nex">
+          <text><![CDATA[< 1000]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18lnuqf">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-32">
+        <inputEntry id="UnaryTests_0enzcfm">
+          <text>]1000..3000[</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lne9jm">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-33">
+        <description>Huge payment…</description>
+        <inputEntry id="UnaryTests_1jnfzqy">
+          <text><![CDATA[> 3000]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0v1wj0f">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="location" name="Usage Matrix03">
+    <extensionElements>
+      <biodi:bounds x="607" y="202" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_0qjet9f">
+      <input id="InputClause_0ykzs2c" label="Location" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0l94mxp" typeRef="string">
+          <text>location</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1gziz2y" label="Risk" name="risk" typeRef="double" />
+      <rule id="row-860506117-36">
+        <inputEntry id="UnaryTests_1xlxu8f">
+          <text><![CDATA["Domestic"]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fllos6">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-37">
+        <inputEntry id="UnaryTests_11lu6zm">
+          <text><![CDATA["Within US/Canada/ Europe regions"]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ozymxr">
+          <text>2</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-38">
+        <inputEntry id="UnaryTests_0lj7bxp">
+          <text><![CDATA["Other International"]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0b41eqc">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="chipStatus" name="Usage Matrix04">
+    <extensionElements>
+      <biodi:bounds x="606" y="304" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_0tsoxkv">
+      <input id="InputClause_17f1v96" label="ChipStatus" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_09ixqf6" typeRef="string">
+          <text>chipstatus</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0ihimv0" label="Risk" name="risk" typeRef="double" />
+      <rule id="row-860506117-39">
+        <description>Fraud Risk</description>
+        <inputEntry id="UnaryTests_1gqnbst">
+          <text><![CDATA["Fully Authenticated Transaction"]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11zklf6">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-40">
+        <inputEntry id="UnaryTests_1gbsulu">
+          <text><![CDATA["Offline Authenticated"]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_011902a">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-41">
+        <inputEntry id="UnaryTests_0asxdcd">
+          <text><![CDATA["No Chip Usage"]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0irv7jt">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
 </definitions>
