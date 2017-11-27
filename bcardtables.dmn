@@ -349,17 +349,17 @@
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Who?" name="Deposit Matrix 01">
+  <decision id="who" name="Deposit Matrix 01">
     <extensionElements>
       <biodi:bounds x="407" y="201" width="180" height="80" />
     </extensionElements>
     <decisionTable id="DecisionTable_01uqudl">
       <input id="InputClause_1ihqkee" label="Risk" camunda:inputVariable="">
-        <inputExpression id="LiteralExpression_03z1zcb" typeRef="string">
-          <text>Who?</text>
+        <inputExpression id="LiteralExpression_03z1zcb" typeRef="double">
+          <text>Who</text>
         </inputExpression>
       </input>
-      <output id="OutputClause_0yyk8y9" label="Risk" name="risk" typeRef="string" />
+      <output id="OutputClause_0yyk8y9" label="Risk" name="risk" typeRef="double" />
       <rule id="row-860506117-7">
         <inputEntry id="UnaryTests_1983fvx">
           <text>Self</text>
@@ -386,7 +386,7 @@
       </rule>
     </decisionTable>
   </decision>
-  <decision id="When?" name="Deposit Matrix 02">
+  <decision id="when" name="Deposit Matrix 02">
     <extensionElements>
       <biodi:bounds x="407" y="303" width="180" height="80" />
     </extensionElements>
@@ -415,14 +415,14 @@
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Amount?" name="Deposit Matrix 03">
+  <decision id="amount" name="Deposit Matrix 03">
     <extensionElements>
       <biodi:bounds x="408" y="406" width="180" height="80" />
     </extensionElements>
     <decisionTable id="DecisionTable_11w2nar">
-      <input id="InputClause_0sc1tye" label="Amount?" camunda:inputVariable="">
+      <input id="InputClause_0sc1tye" label="Amount" camunda:inputVariable="">
         <inputExpression id="LiteralExpression_0lm9tfx" typeRef="double">
-          <text>amount?</text>
+          <text>amount</text>
         </inputExpression>
       </input>
       <output id="OutputClause_1y7mvve" label="Risk" name="risk" typeRef="double" />
@@ -452,14 +452,14 @@
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Frequency?" name="Deposit Matrix 04">
+  <decision id="Frequency" name="Deposit Matrix 04">
     <extensionElements>
       <biodi:bounds x="408" y="504" width="180" height="80" />
     </extensionElements>
     <decisionTable id="DecisionTable_1agej65">
       <input id="InputClause_0webobx" label="Frequency?" camunda:inputVariable="">
         <inputExpression id="LiteralExpression_0prupt7" typeRef="double">
-          <text>frequency?</text>
+          <text>frequency</text>
         </inputExpression>
       </input>
       <input id="InputClause_08wd21x" label="Frequency?" camunda:inputVariable="">
@@ -469,6 +469,7 @@
       </input>
       <output id="OutputClause_1jqifia" label="Risk" name="risk" typeRef="double" />
       <rule id="row-860506117-16">
+        <description>Less than 1/month</description>
         <inputEntry id="UnaryTests_1hrk5ht">
           <text><![CDATA[< 1]]></text>
         </inputEntry>
@@ -480,6 +481,7 @@
         </outputEntry>
       </rule>
       <rule id="row-860506117-17">
+        <description>Less than 1/week</description>
         <inputEntry id="UnaryTests_1yd2mt3">
           <text><![CDATA[< 1]]></text>
         </inputEntry>
@@ -491,6 +493,7 @@
         </outputEntry>
       </rule>
       <rule id="row-860506117-18">
+        <description>Less than 1/day</description>
         <inputEntry id="UnaryTests_02dnga5">
           <text><![CDATA[< 1]]></text>
         </inputEntry>
@@ -502,6 +505,7 @@
         </outputEntry>
       </rule>
       <rule id="row-860506117-19">
+        <description>More than 1 per day</description>
         <inputEntry id="UnaryTests_0wvk70q">
           <text><![CDATA[> 1]]></text>
         </inputEntry>
@@ -514,18 +518,19 @@
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Form of Deposit?" name="Deposit Matrix 05">
+  <decision id="formofdeposit" name="Deposit Matrix 05">
     <extensionElements>
       <biodi:bounds x="408" y="609" width="180" height="80" />
     </extensionElements>
     <decisionTable id="DecisionTable_0x5xs9n">
       <input id="InputClause_0u7mzfr" label="Form of Deposit?" camunda:inputVariable="">
         <inputExpression id="LiteralExpression_0pidtt7" typeRef="double">
-          <text>deposit?</text>
+          <text>deposit</text>
         </inputExpression>
       </input>
       <output id="OutputClause_1e9o0ae" label="Risk" name="risk" typeRef="double" />
       <rule id="row-860506117-20">
+        <description>cash</description>
         <inputEntry id="UnaryTests_0779pfi">
           <text>1</text>
         </inputEntry>
@@ -534,6 +539,7 @@
         </outputEntry>
       </rule>
       <rule id="row-860506117-21">
+        <description>local bank transfer</description>
         <inputEntry id="UnaryTests_0nebcc2">
           <text>9</text>
         </inputEntry>
@@ -542,6 +548,7 @@
         </outputEntry>
       </rule>
       <rule id="row-860506117-22">
+        <description>oversea bank transfer</description>
         <inputEntry id="UnaryTests_0f9n7am">
           <text>10</text>
         </inputEntry>
@@ -550,6 +557,7 @@
         </outputEntry>
       </rule>
       <rule id="row-860506117-23">
+        <description>other</description>
         <inputEntry id="UnaryTests_0y6aech">
           <text>11</text>
         </inputEntry>
@@ -558,6 +566,7 @@
         </outputEntry>
       </rule>
       <rule id="row-860506117-24">
+        <description>debit card</description>
         <inputEntry id="UnaryTests_0jti9be">
           <text>12</text>
         </inputEntry>
@@ -566,6 +575,7 @@
         </outputEntry>
       </rule>
       <rule id="row-860506117-25">
+        <description>check</description>
         <inputEntry id="UnaryTests_05kygrl">
           <text>3</text>
         </inputEntry>
@@ -574,6 +584,7 @@
         </outputEntry>
       </rule>
       <rule id="row-860506117-26">
+        <description>credit</description>
         <inputEntry id="UnaryTests_16mv4om">
           <text>7</text>
         </inputEntry>
