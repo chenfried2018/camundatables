@@ -43,13 +43,19 @@
     </extensionElements>
     <decisionTable id="DecisionTable_1bmfv5v">
       <input id="InputClause_12yn4op" label="Residency" camunda:inputVariable="">
-        <inputExpression id="LiteralExpression_0sm8b7t" typeRef="string">
+        <inputExpression id="LiteralExpression_0sm8b7t" typeRef="double">
           <text>residency</text>
         </inputExpression>
+      </input>
+      <input id="InputClause_16ysav9" label="description">
+        <inputExpression id="LiteralExpression_08va369" typeRef="string" />
       </input>
       <output id="OutputClause_0kykfb3" label="Risk" name="risk" typeRef="double" />
       <rule id="row-820578747-4">
         <inputEntry id="UnaryTests_17eptnf">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1n3zg7n">
           <text><![CDATA["Israel"]]></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ytovd8">
@@ -58,6 +64,9 @@
       </rule>
       <rule id="row-820578747-5">
         <inputEntry id="UnaryTests_1v1t6uf">
+          <text>6</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0697m71">
           <text><![CDATA["West Bank"]]></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1bd3279">
@@ -66,18 +75,13 @@
       </rule>
       <rule id="row-820578747-6">
         <inputEntry id="UnaryTests_0yabscs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08dcwi1">
           <text><![CDATA["Gaza Strip"]]></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1mj1isj">
           <text>50</text>
-        </outputEntry>
-      </rule>
-      <rule id="row-820578747-7">
-        <inputEntry id="UnaryTests_1blz5ww">
-          <text><![CDATA["Foreign"]]></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_01my20r">
-          <text>10</text>
         </outputEntry>
       </rule>
     </decisionTable>
@@ -341,6 +345,240 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_10l54d5">
           <text>10</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Who?" name="Deposit Matrix 01">
+    <extensionElements>
+      <biodi:bounds x="407" y="201" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_01uqudl">
+      <input id="InputClause_1ihqkee" label="Risk" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_03z1zcb" typeRef="string">
+          <text>Who?</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0yyk8y9" label="Risk" name="risk" typeRef="string" />
+      <rule id="row-860506117-7">
+        <inputEntry id="UnaryTests_1983fvx">
+          <text>Self</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0j2e5bo">
+          <text>3</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-8">
+        <inputEntry id="UnaryTests_1pn3vvl">
+          <text>Family Member</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0955ok7">
+          <text>4</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-9">
+        <inputEntry id="UnaryTests_05btftb">
+          <text>Other</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qbs42k">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="When?" name="Deposit Matrix 02">
+    <extensionElements>
+      <biodi:bounds x="407" y="303" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_1vjtbux">
+      <input id="InputClause_1i3xjhq" label="When" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1li63u8" typeRef="integer">
+          <text>when</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_11ubs4b" label="Risk" name="risk" typeRef="double" />
+      <rule id="row-860506117-11">
+        <inputEntry id="UnaryTests_09dp6o3">
+          <text>]7..22[</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0v686kd">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-12">
+        <inputEntry id="UnaryTests_189xpo4">
+          <text>]22..7[</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ubbvoe">
+          <text>3</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Amount?" name="Deposit Matrix 03">
+    <extensionElements>
+      <biodi:bounds x="408" y="406" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_11w2nar">
+      <input id="InputClause_0sc1tye" label="Amount?" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0lm9tfx" typeRef="double">
+          <text>amount?</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1y7mvve" label="Risk" name="risk" typeRef="double" />
+      <rule id="row-860506117-13">
+        <inputEntry id="UnaryTests_1j76frt">
+          <text><![CDATA[< 1000]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tb8hsb">
+          <text>1</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-14">
+        <inputEntry id="UnaryTests_1696seg">
+          <text>]1000..5000[</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0n4bzw9">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-15">
+        <inputEntry id="UnaryTests_0fuiy5c">
+          <text><![CDATA[> 5000]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ka4xnq">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Frequency?" name="Deposit Matrix 04">
+    <extensionElements>
+      <biodi:bounds x="408" y="504" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_1agej65">
+      <input id="InputClause_0webobx" label="Frequency?" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0prupt7" typeRef="double">
+          <text>frequency?</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_08wd21x" label="Frequency?" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1sihqr8" typeRef="double">
+          <text>days</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1jqifia" label="Risk" name="risk" typeRef="double" />
+      <rule id="row-860506117-16">
+        <inputEntry id="UnaryTests_1hrk5ht">
+          <text><![CDATA[< 1]]></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eyzbet">
+          <text>30</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fr5rl2">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-17">
+        <inputEntry id="UnaryTests_1yd2mt3">
+          <text><![CDATA[< 1]]></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ymlixf">
+          <text>7</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03iwzwk">
+          <text>2</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-18">
+        <inputEntry id="UnaryTests_02dnga5">
+          <text><![CDATA[< 1]]></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0toda8q">
+          <text>1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mlbt1r">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-19">
+        <inputEntry id="UnaryTests_0wvk70q">
+          <text><![CDATA[> 1]]></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rfvs5v">
+          <text>1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10xxmgb">
+          <text>15</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Form of Deposit?" name="Deposit Matrix 05">
+    <extensionElements>
+      <biodi:bounds x="408" y="609" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_0x5xs9n">
+      <input id="InputClause_0u7mzfr" label="Form of Deposit?" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0pidtt7" typeRef="double">
+          <text>deposit?</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1e9o0ae" label="Risk" name="risk" typeRef="double" />
+      <rule id="row-860506117-20">
+        <inputEntry id="UnaryTests_0779pfi">
+          <text>1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06ngzuu">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-21">
+        <inputEntry id="UnaryTests_0nebcc2">
+          <text>9</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cv8fzd">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-22">
+        <inputEntry id="UnaryTests_0f9n7am">
+          <text>10</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17962mm">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-23">
+        <inputEntry id="UnaryTests_0y6aech">
+          <text>11</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0w28xv3">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-24">
+        <inputEntry id="UnaryTests_0jti9be">
+          <text>12</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03z81sb">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-25">
+        <inputEntry id="UnaryTests_05kygrl">
+          <text>3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1v7qljf">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-860506117-26">
+        <inputEntry id="UnaryTests_16mv4om">
+          <text>7</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03qsnmw">
+          <text>5</text>
         </outputEntry>
       </rule>
     </decisionTable>
